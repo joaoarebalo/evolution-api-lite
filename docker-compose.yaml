@@ -16,6 +16,8 @@ services:
       - .env
     expose:
       - 8080
+    command: >
+      sh -c "wait-for-it postgres:5432 -- npm run start"
 
   redis:
     image: redis:latest
@@ -52,7 +54,6 @@ volumes:
   evolution_instances:
   evolution_redis:
   postgres_data:
-
 
 networks:
   evolution-net:
